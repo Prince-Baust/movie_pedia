@@ -7,7 +7,7 @@ import MovieCard from "./MovieCard";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [searhTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const API_URL = 'http://www.omdbapi.com/?apikey=5656a896';
   const searchMovie = async (title) => {
@@ -20,7 +20,7 @@ const App = () => {
   }
 
   useEffect(() => {
-      searchMovie('spider-man');
+      searchMovie('');
   }, []);
 
   return (
@@ -28,8 +28,8 @@ const App = () => {
       <h1>MoviePidea</h1>
 
       <div className="search">
-        <input type="text" placeholder="Search for Movies" value={searhTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}/>
-        <img src={searchIcon} alt="search" onClick={()=> {}}/>
+        <input type="text" placeholder="Search for Movies" value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}}/>
+        <img src={searchIcon} alt="search" onClick={()=> {searchMovie(searchTerm)}}/>
       </div>
       {
         movies?.length > 0
